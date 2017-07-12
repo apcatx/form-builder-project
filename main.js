@@ -97,33 +97,20 @@ let formData = [
 let fields = document.querySelector('#fields');
 
 for (let i = 0; i < formData.length; i++ ){
-  let type = document.createElement('input');
-  let label = document.createElement('input');
-  let id = document.createElement('input');
-  // let icon = document.createElement('fa-awesome');
-  let options = document.createElement('input')
 
-  type.setAttribute('type', formData[i].type);
+  let input = document.createElement('input');
 
-  fields.appendChild( type );
 
-  console.log(type);
+  fields.appendChild( input );
+
+  input.type = formData [i].type;
+  input.placeholder = formData [i].label;
+  input.id = formData [i].id;
+  input.icon = formData [i].icon;
+  input.options = formData [i].options;
+
+
+
+
+console.log(input)
 }
-
-
-
-
-
-
-
-
-  // let second = formData[1];
-  // let third = formData[2];
-  // let fourth = formData[3];
-  // let fifth = formData[4];
-  // let sixth = formData[5];
-  // let seventh = formData[6];
-  // let eighth = formData[7];
-  //
-  // let inputText = document.createElement('input');
-  //   inputText.setAttribute('type', 'text');
