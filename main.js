@@ -36,8 +36,7 @@ let formData = [
     "label": "Select Language",
     "id": "user-language",
     "icon": "",
-    "options": [
-      {
+    "options": [{
         "label": "English",
         "value": "EN"
       },
@@ -82,35 +81,57 @@ let formData = [
   }
 ];
 
-// HINTS:
-// As you can see, we access the first element in the array
-// with [0] and then grab the property "label" using the "." operator
-( function(){
-  // Select the first element from the array
-  // let first = formData[ 0 ];
-
-} )();
-
-
 // -------- Your Code Goes Below this Line --------
-//
+
 let fields = document.querySelector('#fields');
 
-for (let i = 0; i < formData.length; i++ ){
+for (let i = 0; i < formData.length; i++) {
+  if (formData[i].label != "Select Language") {
+    if (formData[i].type != "textarea") {
+      let input = document.createElement('input');
 
-  let input = document.createElement('input');
+      input.type = formData[i].type;
+      input.placeholder = formData[i].label;
+      input.id = formData[i].id;
+      input.icon = formData[i].icon;
+      input.options = formData[i].options;
 
+      fields.appendChild(input);
 
-  fields.appendChild( input );
+    }
+  }
 
-  input.type = formData [i].type;
-  input.placeholder = formData [i].label;
-  input.id = formData [i].id;
-  input.icon = formData [i].icon;
-  input.options = formData [i].options;
+  if (formData[i].options.length > 0) {
+    let dropdown = document.createElement("select");
+    let selectOption = `${formData[i].label}`
+    let option = document.createElement("option");
 
+    option.setAttribute("selected", "true");
+    option.setAttribute("disabled", "true");
+    option.innerHTML = `${selectOption}`;
 
+    dropdown.appendChild(option);
 
+    for (a = 0; a < formData[i].options.length; a++) {
+      let dropdownOption = document.createElement("option");
 
-console.log(input)
+      dropdownOption.setAttribute("value", formData[i].options[a].value);
+      dropdownOption.innerHTML = formData[i].options[a].label;
+      dropdown.appendChild(dropdownOption);
+
+      fields.appendChild(dropdown);
+
+    }
+  }
+
+  if (formData[i].type === "textarea") {
+    let textarea = document.createElement("textarea");
+
+    textarea.setAttribute("placeholder", `${formData[i].label}`);
+
+    fields.appendChild(textarea);
+
+  }
 }
+
+console.log(fields);
