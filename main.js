@@ -86,8 +86,7 @@ let formData = [
 let fields = document.querySelector('#fields');
 
 for (let i = 0; i < formData.length; i++) {
-  if (formData[i].label != "Select Language") {
-    if (formData[i].type != "textarea") {
+  if (formData[i].type != "select" && "textarea") {
       let input = document.createElement('input');
 
       input.type = formData[i].type;
@@ -98,7 +97,7 @@ for (let i = 0; i < formData.length; i++) {
 
       fields.appendChild(input);
 
-    }
+
   }
 
   if (formData[i].options.length > 0) {
@@ -106,8 +105,6 @@ for (let i = 0; i < formData.length; i++) {
     let selectOption = `${formData[i].label}`
     let option = document.createElement("option");
 
-    option.setAttribute("selected", "true");
-    option.setAttribute("disabled", "true");
     option.innerHTML = `${selectOption}`;
 
     dropdown.appendChild(option);
